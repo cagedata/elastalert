@@ -1236,7 +1236,7 @@ class VictorOpsAlerter(Alerter):
         proxies = {'https': self.victorops_proxy} if self.victorops_proxy else None
         payload = {
             "message_type": self.victorops_message_type,
-            "entity_display_name": self.victorops_entity_display_name,
+            "entity_display_name": lookup_es_key(matches[0], self.victorops_entity_display_name),
             "monitoring_tool": "ElastAlert",
             "state_message": body
         }
